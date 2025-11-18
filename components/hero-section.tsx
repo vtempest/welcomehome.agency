@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import { ArrowRight, Search, MessageSquare, Play } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Ripple } from '@/components/ui/ripple'
 
 export function HeroSection() {
   return (
@@ -16,6 +17,10 @@ export function HeroSection() {
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+      </div>
+
+      <div className="absolute inset-0 z-[5]">
+        <Ripple mainCircleSize={210} mainCircleOpacity={0.24} numCircles={8} />
       </div>
 
       <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-6 py-6 lg:px-12">

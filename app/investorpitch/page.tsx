@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-
-const uiScreenshot = 'data:image/png;base64,UklGRn5mAQBXRUJQVlA4WAoAAAAgAAAA4AUAKwUASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggkGQBABCFBZ0BKuEFLAU+USaQRqOhoaEiUfn4cAoJaW78bwwJYMF78oyIPO3cp6biVFp4B41gs2r09pWT+2/t37l+VTIvqP8L/h/3B/vnvy2l/Cf2z9jfFB+v8IOtfM/8t/Tf+J/dP8x+y/zm/yP+5/u34e/Qn9Kf9b8//oD/UL/qf3r/G+z96kf3H/63sF/qv+M/Zn/n/D5/g/+p/kf3/+Tv9x/y//n/13+q+QT+l/3n/lfn/8cHsOf5n/uewT/Ov8V/3PXI/bf/ifKJ/V/99+3X/I+Rr+kf5P///u18AH/39QD/5db/01/q/9s/yH+K/sfx2+Sfo39k/u/+d/wX9u/8/+g9qfxz5j+0/3D/G/5/+0//T/U/ER/Xf4fxG+j/wf+y/0H+W/7X+C////u+jP479evuv9o/zf+y/uX7d/dz9h/xv+D/zn+p/vX7Uez/59+5f5T/Dft9/g/3g+wX8j/lP90/sv+V/2X9y/cX3O/7H/Gf6T/k+Ezsf+b/1v+P/z3/B/t3//+gX2M+e/5X+9f5z/h/3/90PZk/pv79/mv+l/h////2foz9A/tP+v/xn+X/7/+V///4Afyb+j/6D+/fu3/fv///1vuv/Q/9X/O/v16Rf4X/T/9j/PfnF9gX83/t3/S/xH+j/a76YP5X/rf5X/U/+z/Lf/////GX9C/x//Y/zX+t//H+e////j/Qn+Zf1j/f/37/Sf+z/O////zfeT/+/9j8D/3N//P/J+GH9qf/9/qWk+E1hxPx4MhASWJrDifjwZCAksTWHE/HgyEBJYmsOJ+PBkICSxNYcT8eDIQEliarou+zCGBjEItXdSxJh4MhASWJrDifjwZCAksTWHE/HgyEBJYmsOJ+PBkICSxNYcT8eDIQEliaw2fGOw/k/1jGnzr1Wu8pOBm3TlHNZEbHeM4DDXUHQQihHOX3wtaJkUtZLzBp4uTJ34oWAqI2eYHFXa5DSV5MgTT2Pb3w69yzgwczjrbN+JeYB7SKDse/G0udstooLaimFHEjn7aiaw4n48GQgJLE1hxPx4MhASWJrDifjwZCAksTWHE/GbmMD/39IRNkkzKEX8oXva10tWsjRS0sZUVYqncV8gLv9efpfEbxIoYYrSF/0NKkHia77zWfZeIttL0S/yBIGzeYsBjecc9kuVjZKZYrrGKvBXST09SasJZ9IqLbur/C2xob+x+un2k7aBDWPESRzaAOCnbZeQ8Pegayw3LjNLXi7INAjQUz2yVduHhnKGBtQPD5nekSSJh/KLX0/dx2vjkq'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface Slide {
   type?: string
@@ -279,7 +278,35 @@ export default function InvestorPitchPage() {
   const slide = slides[currentSlide]
 
   return (
-    <div className="min-h-screen bg-[url('data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAOSBkADASIAAhEBAxEB/8QAHQAAAgIDAQEBAAAAAAAAAAAAAQIAAwQFBgcICf/EAGIQAAECBAQCBQYIBwwHBgUBCQECEQADBCEFEjFBBlEiYXGBkQcTMkKhwRRSYnKx0eHwFSMzgpKy8QgWJDQ1Q1Njc3SisyU2RFSDk8IXJlVko7Q3RXWElNJGZSfiGMNWhfL/xAAbAQADAQEBAQEAAAAAAAAAAAAAAQIDBAUGB//EADgRAAIBAgQEBAQFBAIDAQEAAAABAgMRBBIhMQUTQVEUIjJSM0JhcSM0gZGhBxUksWLwQ1PRwfH/2gAMAwEAAhEDEQA/APmYP8pmfTY/bFyc7AdJwS4Ya7+yKUpBICsoexJJ8YcAa5QA1xyj20YMtTmcAZ2YDa49WHSSSC67nM+99+82isJ5BIDs7HxixICr9EDsNufhFozYzKSB6Y13AY+t7IgJAtnYjpve+0AZdGTcAFwe7v3MMAl/U56ePjFoAjzhLdJ3AHSGu3dAJs5zFJGhVtv7YjAhuiCzXHhAKQ3q7+qb84Yg31Vmzb33+0QL29Iv16tp4QAEsL7a5T490OQ6jYJNhodfthgQ3JzZiN77bmIQSwVmfRn8BAyhrAakgMYYAWDg7Cx0+2DUkiVKZ8xAdzfuf3QycwIym4Js++48IAAZkhLkhte6CpQA6JZ7O505+MUgIHKSxJS251TsO6GLhyVl+b/4u/SAC9yW3Zz3t2wxcnUHqfXq7BDJuKHY2IuzPoOXfBc21vpfXl4RAxbpWYl+rn2iGLaEgPY9XX2mFYBc53KmuTe/yoZJVcXKtGJ16vCA5ubZixZjro3ZDJA3IZm0Om3thgR1A2zKsGL68vHSDdgA7Nbpbbe20BQDF7G+x7/AxMqSm4D79E9hb6YYrkcnmB26c/AwQ+pB0JLHTnvtrByg65X+b4jwhglPybMzp8PtgEJfmptLHTke+HQtRIN73Z9DplgFKWDJDMR6O2/fyhki5cD9H77W7YAACWvmYP62g590DpJIdJ3dleMMwB0Hej79nbAYHRufo/fsgEBlDUKb5+rfXB6QOinB+NvtBAHNIvfo6cj3RAElQYafJ0/ZrDERyUsHZj6x0F/ptEJXmt6RPM2MQZACbNybrt7bwSEqscqttNefjAMg0J6QSQzB3bl2vBILkFRDm7Pb7Gg2dxlcb7dR7tIhADWYMzP4pP0w0xNjHO2YEhWrX74BzOBmUU6abC8FgXZnO77jQwOi2gYfK25eMMkUhRFysPfTn9UMytBnu+zQcurBL8ge8xAARolzvm8D7oLhcBzu4zFyGP0RALaqCQOez6+MEBJBFgGO5sOfdDAn5IOawzGx2EF2AqSe99SbP9UAi13y5dDrl5dsFxlAsUs7ZjdPLxhi4VdSXF3c7WeHcQnTKhfpOP0tvZEuE2fKQT+bvDa9EsPVsYINwRlBJdnOu4hXFcVQZ30cPfXkYDqB9K+ZyX9bn2RYNgCCE2Dq++sCw1fK1wFeryhpiuK5A1tdrnviOpO5YM1zb4sWDM/ygdc1n/ZBSk+qL7Orc7Q9QzIQFRDEqcuPSPfAKjncrLEPYnT64sLO3SyMzvqNjBIUT6JzP8bfbuhCuVpzOGUQQW9Lfn3wMxy6qCW0zbPcRezMGURceltv3vCsond3Bd99jAFxMygSXcuNFann4QNfXIToC5sOcW5SPRzWf1vH7IUhtCWBG/qmHcLigqIu9wxDnuTBzKFw5OrXuTqIYOAxJzaO/rbGBu722...')] bg-cover bg-center relative before:content-[''] before:fixed before:inset-0 before:bg-gradient-to-br before:from-[rgba(102,126,234,0.65)] before:to-[rgba(118,75,162,0.65)]">
+    <div className="min-h-screen bg-[url('data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAOSBkADASIAAhEBAxEB/8QAHQAAAgIDAQEBAAAAAAAAAAAAAQIAAwQFBgcICf/EAGIQAAECBAQCBQYIBwwHBgUBCQECEQADBCEFEjFBElEiYXGBkQcZMqGx0RMBAgQDBQYHNDc1Q1FhcBISEyIyQ2JykaMBAgMFBgcICRAREhMUFRYX')] bg-cover bg-fixed relative before:content-[''] before:fixed before:inset-0 before:bg-gradient-to-br before:from-[rgba(102,126,234,0.65)] before:to-[rgba(118,75,162,0.65)]">
+      {/* Navigation arrows as overlay buttons */}
+      <button
+        className="absolute left-5 top-1/2 -translate-y-1/2 z-50 bg-white/90 hover:bg-white text-[#667eea] border-none w-14 h-14 rounded-full cursor-pointer font-semibold transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.2)] hover:translate-y-[-2px] hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)] hover:bg-[#667eea] hover:text-white disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center group"
+        onClick={prevSlide}
+        disabled={currentSlide === 0 || isTransitioning}
+        aria-label="Previous slide"
+      >
+        <ChevronLeft className="w-7 h-7" />
+      </button>
+
+      <button
+        className="absolute right-5 top-1/2 -translate-y-1/2 z-50 bg-white/90 hover:bg-white text-[#667eea] border-none w-14 h-14 rounded-full cursor-pointer font-semibold transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.2)] hover:translate-y-[-2px] hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)] hover:bg-[#667eea] hover:text-white disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center group"
+        onClick={nextSlide}
+        disabled={currentSlide === slides.length - 1 || isTransitioning}
+        aria-label="Next slide"
+      >
+        <ChevronRight className="w-7 h-7" />
+      </button>
+
+      {/* Slide counter overlay */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 bg-black/60 backdrop-blur-md px-6 py-3 rounded-full">
+        <div className="text-white text-lg font-semibold flex items-center gap-4">
+          <span className="text-white/80 text-sm">Use arrow keys</span>
+          <span className="text-white/40">|</span>
+          <span>{currentSlide + 1} / {slides.length}</span>
+        </div>
+      </div>
+
       <div className="relative z-10 h-screen flex flex-col">
         <div className={`flex-1 flex flex-col justify-center items-center p-16 md:p-20 bg-white/88 m-5 rounded-[20px] shadow-[0_20px_60px_rgba(0,0,0,0.4)] backdrop-blur-[10px] transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-x-[-100px] scale-95' : 'opacity-100 translate-x-0 scale-100'}`}>
           <div className="w-full max-w-[1000px]">
@@ -307,7 +334,13 @@ export default function InvestorPitchPage() {
                 
                 {slide.hasScreenshot && (
                   <div className="my-8 text-center animate-fade-in">
-                    <img src={uiScreenshot || "/placeholder.svg"} alt="AI Agent Dashboard" className="max-w-[90%] rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.3)] border-4 border-[rgba(102,126,234,0.3)] mx-auto" />
+                    <Image 
+                      src="/ai-agent-dashboard-with-property-monitoring-and-an.jpg" 
+                      alt="AI Agent Dashboard" 
+                      width={800}
+                      height={400}
+                      className="max-w-[90%] rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.3)] border-4 border-[rgba(102,126,234,0.3)] mx-auto"
+                    />
                   </div>
                 )}
                 
@@ -325,9 +358,11 @@ export default function InvestorPitchPage() {
                 
                 {slide.imageQuery && (
                   <div className="my-8 text-center animate-fade-in">
-                    <img 
-                      src={`/.jpg?key=a0xr4&height=450&width=800&query=${encodeURIComponent(slide.imageQuery)}`} 
+                    <Image 
+                      src={`/.jpg?key=w2niv&height=450&width=800&query=${encodeURIComponent(slide.imageQuery)}`} 
                       alt={slide.imageQuery} 
+                      width={800}
+                      height={450}
                       className="max-w-[90%] rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.3)] border-4 border-[rgba(102,126,234,0.3)] mx-auto"
                     />
                   </div>
@@ -346,32 +381,6 @@ export default function InvestorPitchPage() {
               </>
             )}
           </div>
-        </div>
-        
-        <div className="flex justify-between items-center p-5 md:p-10 bg-black/30 backdrop-blur-[10px]">
-          <button
-            className="bg-white text-[#667eea] border-none px-6 md:px-8 py-3 md:py-4 text-lg rounded-xl cursor-pointer font-semibold transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.2)] hover:translate-y-[-2px] hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)] hover:bg-[#667eea] hover:text-white disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:bg-white disabled:hover:text-[#667eea]"
-            onClick={prevSlide}
-            disabled={currentSlide === 0 || isTransitioning}
-          >
-            ← Previous
-          </button>
-          
-          <div className="text-white text-xl font-semibold flex items-center gap-5">
-            <span className="text-white/90 text-base flex items-center gap-2">
-              <span className="bg-white/20 px-2 py-1 rounded font-mono font-bold">←</span>
-              <span className="bg-white/20 px-2 py-1 rounded font-mono font-bold">→</span>
-            </span>
-            <span>{currentSlide + 1} / {slides.length}</span>
-          </div>
-          
-          <button
-            className="bg-white text-[#667eea] border-none px-6 md:px-8 py-3 md:py-4 text-lg rounded-xl cursor-pointer font-semibold transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.2)] hover:translate-y-[-2px] hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)] hover:bg-[#667eea] hover:text-white disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:bg-white disabled:hover:text-[#667eea]"
-            onClick={nextSlide}
-            disabled={currentSlide === slides.length - 1 || isTransitioning}
-          >
-            Next →
-          </button>
         </div>
       </div>
 

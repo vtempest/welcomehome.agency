@@ -144,3 +144,13 @@
     background-position: calc(100% + var(--shimmer-width)) 0;
   }
 }
+
+/* Added ripple animation keyframes */
+@keyframes ripple {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+}
