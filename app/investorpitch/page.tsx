@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 const uiScreenshot = 'data:image/png;base64,UklGRn5mAQBXRUJQVlA4WAoAAAAgAAAA4AUAKwUASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggkGQBABCFBZ0BKuEFLAU+USaQRqOhoaEiUfn4cAoJaW78bwwJYMF78oyIPO3cp6biVFp4B41gs2r09pWT+2/t37l+VTIvqP8L/h/3B/vnvy2l/Cf2z9jfFB+v8IOtfM/8t/Tf+J/dP8x+y/zm/yP+5/u34e/Qn9Kf9b8//oD/UL/qf3r/G+z96kf3H/63sF/qv+M/Zn/n/D5/g/+p/kf3/+Tv9x/y//n/13+q+QT+l/3n/lfn/8cHsOf5n/uewT/Ov8V/3PXI/bf/ifKJ/V/99+3X/I+Rr+kf5P///u18AH/39QD/5db/01/q/9s/yH+K/sfx2+Sfo39k/u/+d/wX9u/8/+g9qfxz5j+0/3D/G/5/+0//T/U/ER/Xf4fxG+j/wf+y/0H+W/7X+C////u+jP479evuv9o/zf+y/uX7d/dz9h/xv+D/zn+p/vX7Uez/59+5f5T/Dft9/g/3g+wX8j/lP90/sv+V/2X9y/cX3O/7H/Gf6T/k+Ezsf+b/1v+P/z3/B/t3//+gX2M+e/5X+9f5z/h/3/90PZk/pv79/mv+l/h////2foz9A/tP+v/xn+X/7/+V///4Afyb+j/6D+/fu3/fv///1vuv/Q/9X/O/v16Rf4X/T/9j/PfnF9gX83/t3/S/xH+j/a76YP5X/rf5X/U/+z/Lf/////GX9C/x//Y/zX+t//H+e////j/Qn+Zf1j/f/37/Sf+z/O////zfeT/+/9j8D/3N//P/J+GH9qf/9/qWk+E1hxPx4MhASWJrDifjwZCAksTWHE/HgyEBJYmsOJ+PBkICSxNYcT8eDIQEliarou+zCGBjEItXdSxJh4MhASWJrDifjwZCAksTWHE/HgyEBJYmsOJ+PBkICSxNYcT8eDIQEliaw2fGOw/k/1jGnzr1Wu8pOBm3TlHNZEbHeM4DDXUHQQihHOX3wtaJkUtZLzBp4uTJ34oWAqI2eYHFXa5DSV5MgTT2Pb3w69yzgwczjrbN+JeYB7SKDse/G0udstooLaimFHEjn7aiaw4n48GQgJLE1hxPx4MhASWJrDifjwZCAksTWHE/GbmMD/39IRNkkzKEX8oXva10tWsjRS0sZUVYqncV8gLv9efpfEbxIoYYrSF/0NKkHia77zWfZeIttL0S/yBIGzeYsBjecc9kuVjZKZYrrGKvBXST09SasJZ9IqLbur/C2xob+x+un2k7aBDWPESRzaAOCnbZeQ8Pegayw3LjNLXi7INAjQUz2yVduHhnKGBtQPD5nekSSJh/KLX0/dx2vjkq'
 
@@ -10,13 +11,18 @@ interface Slide {
   subtitle?: string
   bullets?: string[]
   hasScreenshot?: boolean
+  hasLogo?: boolean
+  image?: string
+  imageAlt?: string
+  imageQuery?: string
 }
 
 const slides: Slide[] = [
   {
     type: 'title',
     title: 'AI Research Agents for Real Estate',
-    subtitle: 'Transforming Property Markets Through Intelligent Automation'
+    subtitle: 'Transforming Property Markets Through Intelligent Automation',
+    hasLogo: true
   },
   {
     title: 'Executive Overview',
@@ -47,7 +53,9 @@ const slides: Slide[] = [
       '<span class="stat">5-minute alerts</span> on any price changes',
       'Multi-timeframe trend analysis (hourly → monthly)',
       'Automated CMA generation'
-    ]
+    ],
+    image: '/images/data-extraction.jpg',
+    imageAlt: 'Real-time property data extraction and analysis'
   },
   {
     title: 'Market Forecasting Agent',
@@ -80,7 +88,8 @@ const slides: Slide[] = [
       '<span class="stat">80-85%</span> autonomous inquiry handling',
       '<span class="stat">85%+</span> lead qualification accuracy',
       '<span class="stat">4.2/5</span> customer satisfaction'
-    ]
+    ],
+    imageQuery: 'AI chatbot assistant helping real estate customer with property search'
   },
   {
     title: 'Lead Nurturing & Follow-Up Agent',
@@ -102,7 +111,8 @@ const slides: Slide[] = [
       '<span class="stat">&lt;2 seconds</span> to match & rank (0-100)',
       'Investment analysis: cap rate, cash-on-cash, ROI',
       'AI virtual staging + MLS-optimized descriptions'
-    ]
+    ],
+    imageQuery: 'modern property search interface showing multiple homes with AI recommendations'
   },
   {
     title: 'Sales Operations Agent',
@@ -188,7 +198,8 @@ const slides: Slide[] = [
       '<span class="highlight">Modern Realty (YC):</span> 70% prefer AI until negotiation',
       '<span class="highlight">Beam AI:</span> 85% automation, 25% revenue ↑, 3x faster',
       '<span class="highlight">Hyro:</span> 85% handled, 15 languages, full CRM'
-    ]
+    ],
+    imageQuery: 'business analytics dashboard showing growth charts and success metrics'
   },
   {
     title: 'Business Impact Metrics',
@@ -199,7 +210,8 @@ const slides: Slide[] = [
       '<span class="stat">3x faster</span> responses = higher closing',
       '<span class="stat">48% engagement</span> vs 15-20% baseline',
       '<span class="stat">95%+ accuracy</span> price forecasts'
-    ]
+    ],
+    imageQuery: 'upward trending business growth chart with revenue increase visualization'
   },
   {
     title: 'Implementation Roadmap',
@@ -224,7 +236,8 @@ const slides: Slide[] = [
   {
     type: 'title',
     title: 'Ready to Transform Real Estate',
-    subtitle: 'AI-Powered Intelligence • Human-Centered Results • Proven ROI'
+    subtitle: 'AI-Powered Intelligence • Human-Centered Results • Proven ROI',
+    hasLogo: true
   }
 ]
 
@@ -270,6 +283,18 @@ export default function InvestorPitchPage() {
       <div className="relative z-10 h-screen flex flex-col">
         <div className={`flex-1 flex flex-col justify-center items-center p-16 md:p-20 bg-white/88 m-5 rounded-[20px] shadow-[0_20px_60px_rgba(0,0,0,0.4)] backdrop-blur-[10px] transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-x-[-100px] scale-95' : 'opacity-100 translate-x-0 scale-100'}`}>
           <div className="w-full max-w-[1000px]">
+            {slide.hasLogo && (
+              <div className="flex justify-center mb-8 animate-fade-in">
+                <Image 
+                  src="/images/wh-logo.png" 
+                  alt="Welcome Home Agency Logo" 
+                  width={150} 
+                  height={150}
+                  className="drop-shadow-2xl"
+                />
+              </div>
+            )}
+            
             {slide.type === 'title' ? (
               <div className={`${slide.type === 'title' ? 'bg-gradient-to-br from-[rgba(102,126,234,0.90)] to-[rgba(118,75,162,0.90)] backdrop-blur-[15px] p-8 rounded-xl' : ''}`}>
                 <h1 className="text-5xl md:text-6xl text-white text-center font-bold mb-8 drop-shadow-lg animate-fade-in">{slide.title}</h1>
@@ -279,11 +304,35 @@ export default function InvestorPitchPage() {
               <>
                 <h2 className="text-4xl md:text-5xl text-[#764ba2] text-center font-semibold mb-8 drop-shadow-sm animate-fade-in">{slide.title}</h2>
                 {slide.subtitle && <h3 className="text-2xl md:text-3xl text-gray-600 text-center mb-5 animate-fade-in">{slide.subtitle}</h3>}
+                
                 {slide.hasScreenshot && (
                   <div className="my-8 text-center animate-fade-in">
                     <img src={uiScreenshot || "/placeholder.svg"} alt="AI Agent Dashboard" className="max-w-[90%] rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.3)] border-4 border-[rgba(102,126,234,0.3)] mx-auto" />
                   </div>
                 )}
+                
+                {slide.image && (
+                  <div className="my-8 text-center animate-fade-in">
+                    <Image 
+                      src={slide.image || "/placeholder.svg"} 
+                      alt={slide.imageAlt || 'Slide illustration'} 
+                      width={800} 
+                      height={450}
+                      className="max-w-[90%] rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.3)] border-4 border-[rgba(102,126,234,0.3)] mx-auto"
+                    />
+                  </div>
+                )}
+                
+                {slide.imageQuery && (
+                  <div className="my-8 text-center animate-fade-in">
+                    <img 
+                      src={`/.jpg?key=a0xr4&height=450&width=800&query=${encodeURIComponent(slide.imageQuery)}`} 
+                      alt={slide.imageQuery} 
+                      className="max-w-[90%] rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.3)] border-4 border-[rgba(102,126,234,0.3)] mx-auto"
+                    />
+                  </div>
+                )}
+                
                 <ul className="list-none p-0">
                   {slide.bullets?.map((bullet, index) => (
                     <li
