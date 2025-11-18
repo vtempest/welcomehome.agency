@@ -52,7 +52,17 @@ export function HeroSection() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
           </span>
-          <span className="text-sm font-medium text-white">AI-Powered Real Estate Intelligence</span>
+          <span 
+            className="text-sm font-medium text-white bg-clip-text bg-no-repeat animate-shimmer"
+            style={{
+              '--shimmer-width': '100px',
+              backgroundImage: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8) 50%, transparent)',
+              backgroundSize: 'var(--shimmer-width) 100%',
+              backgroundPosition: '0 0'
+            } as React.CSSProperties}
+          >
+            AI-Powered Real Estate Intelligence
+          </span>
         </div>
 
         <p className="text-lg md:text-xl text-white/80 mb-10 max-w-3xl mx-auto text-pretty leading-relaxed">

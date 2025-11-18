@@ -113,6 +113,8 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  /* Added shimmer animation for text effect */
+  --animate-shimmer: shimmer 8s infinite;
   /* Added border-beam animation keyframes */
   --animate-border-beam: border-beam calc(var(--duration, 15s)) infinite linear;
 }
@@ -130,5 +132,15 @@
 @keyframes border-beam {
   to {
     offset-distance: 100%;
+  }
+}
+
+/* Added shimmer animation keyframes */
+@keyframes shimmer {
+  0%, 90%, 100% {
+    background-position: calc(-100% - var(--shimmer-width)) 0;
+  }
+  30%, 60% {
+    background-position: calc(100% + var(--shimmer-width)) 0;
   }
 }
