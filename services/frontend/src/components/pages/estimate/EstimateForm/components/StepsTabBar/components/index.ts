@@ -1,5 +1,0 @@
-export { default as StepsTab } from './StepsTab'
-export { default as StepsTabBullet } from './StepsTabBullet'
-export { default as StepsTabContainer } from './StepsTabContainer'
-export { default as StepsTabLabel } from './StepsTabLabel'
-export { default as StepsTabList } from './StepsTabList'
